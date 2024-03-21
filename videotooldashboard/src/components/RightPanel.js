@@ -6,14 +6,14 @@ const RightContainer = styled.div`
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
+  padding: 55px;
 `;
 
 const TopBar = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+
   background-color: #FFFFFF;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const NavigationButtons = styled.div`
@@ -70,7 +70,7 @@ const SearchBarContainer = styled.div`
   border-radius: 7px; // Radio más pronunciado, ajusta según sea necesario
   padding: 8px 16px; // Ajusta el padding según sea necesario
   width: auto; // Ajustamos el ancho para no estirar toda la barra
-  max-width: 320px; // O el ancho máximo que prefieras
+  max-width: 40%; // O el ancho máximo que prefieras
 `;
 
 const SearchIcon = styled.span`
@@ -143,8 +143,7 @@ const RightPanel = () => {
           <SearchIcon>🔍|</SearchIcon> {/* Reemplazar con tu icono específico */}
           <Input />
         </SearchBarContainer>
-      </TopBar>
-      <TableContainer>
+        <TableContainer>
         <Table>
           <Thead>
             <tr>
@@ -166,6 +165,8 @@ const RightPanel = () => {
           </Tbody>
         </Table>
       </TableContainer>
+      </TopBar>
+
     </RightContainer>
   );
 };
