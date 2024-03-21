@@ -1,0 +1,16 @@
+/* Estilos generales para la aplicación */
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px; /* Ancho de la barra lateral */
+  background-color: #333; /* Color de fondo de la barra lateral */
+  padding: 20px;
+  color: #fff; /* Color del texto en la barra lateral */
+}
+
+.content {
+  flex: 1; /* El contenido se expandirá para ocupar todo el espacio disponible */
+  padding: 20px;
+}
