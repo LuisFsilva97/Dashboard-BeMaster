@@ -2,7 +2,7 @@
 
 Encontraras dos Readme, este es para mostrarte visualmente toda la informacion por medio de fotos, porfavor observa todos los detalles implementados en esta, les quedo muy agradecido por esta oportunidad les deseo lo mejor y les guste el diseño clonado de app, en el video de youte explicare cada uno de los pasos que segui, completamente divertido el test, gracias.🚀
 
-Acontinuacion encontraras una carpeta llamada: appdisneypadawan, esta es la que contiene todo el proyecto, dentro de ella esta el readme para que puedas descargar la aplicacion, instalar su componentes paso a paso, te recuerdo que se usaron las siguientes tecnologias, coponentes: Javascript, React, Doom, Styled components esto para que tengas en cuenta la instalacion de todos los compomponentes. 😁
+Acontinuacion encontraras una carpeta llamada: videotooldashboard, esta es la que contiene todo el proyecto, dentro de ella esta el readme para que puedas descargar la aplicacion, instalar su componentes paso a paso, te recuerdo que se usaron las siguientes tecnologias, coponentes: Javascript, React, Doom, Styled components esto para que tengas en cuenta la instalacion de todos los compomponentes. 😁
 
 Apartir de este momento observé detalladamente la aplicacion por medio de fotos:
 
