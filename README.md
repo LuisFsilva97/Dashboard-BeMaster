@@ -2,15 +2,14 @@
 
 Encontraras dos Readme, este es para mostrarte visualmente toda la informacion por medio de fotos, porfavor observa todos los detalles implementados en esta, les quedo muy agradecido por esta oportunidad les deseo lo mejor y les guste el diseño clonado de app, en el video de youte explicare cada uno de los pasos que segui, completamente divertido el test, gracias.🚀
 
-Acontinuacion encontraras una carpeta llamada: videotooldashboard, esta es la que contiene todo el proyecto, dentro de ella esta el readme para que puedas descargar la aplicacion, instalar su componentes paso a paso, te recuerdo que se usaron las siguientes tecnologias, coponentes: Javascript, React, Doom, Styled components esto para que tengas en cuenta la instalacion de todos los compomponentes. 😁
+Acontinuacion encontraras una carpeta llamada: videotooldashboard, esta es la que contiene todo el proyecto, dentro de ella esta el readme para que puedas descargar la aplicacion, instalar su componentes paso a paso, te recuerdo que se usaron las siguientes tecnologias, coponentes: Javascript, React, Doom, Styled components, React icons esto para que tengas en cuenta la instalacion de todos los compomponentes. 😁
 
 Apartir de este momento observé detalladamente la aplicacion por medio de fotos:
 
 ## Tecnologias y mas:
 ![javascript-logo-transparent-logo-javascript-images-3](https://github.com/LuisFsilva97/VideoTools-BeMaster/assets/157631615/c6942b19-c2cd-4b3d-b4b1-e4dd9909c687)
 ![0_hZVviBH2tjLtiAat](https://github.com/LuisFsilva97/VideoTools-BeMaster/assets/157631615/6adf92c0-3eeb-4f97-86fc-3f9510e41743)
-![React-Logo-PNG-Pic](https://github.com/LuisFsilva97/VideoTools-BeMaster/assets/157631615/e935db00-5752-4a61-9eff-2f120a674189)
-
+![React-Logo-PNG-Pic](https://github.com/LuisFsilva97/VideoTools-BeMaster/assets/157631615/e935db00-5752-4a61-9eff-2f120a674189)<img src="https://github.com/LuisFsilva97/VideoTools-BeMaster/assets/157631615/0af73dc8-ddd4-43e6-85e7-1a65cee79188" width="11%">
 
 
 # DASHBOARD PRINCIPAL: 
