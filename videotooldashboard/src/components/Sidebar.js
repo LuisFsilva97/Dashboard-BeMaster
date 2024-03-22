@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MdOutlineDashboard, MdOutlineAnalytics  } from "react-icons/md";
+import { GoFileDirectory } from "react-icons/go";
+import { HiOutlinePlayCircle } from "react-icons/hi2";
+import { IoSettingsOutline } from "react-icons/io5";
+
 
 const SidebarContainer = styled.div`
   width: 256px;
@@ -7,28 +12,22 @@ const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px;
-  height: calc(100vh - 20px); /* Ajustado para tener en cuenta el margen */
-  margin: 30px auto; /* Margen general con auto para centrar horizontalmente */
-  border-radius: 8px; /* Bordes ligeramente redondeados */
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
-
-// ...resto de tus estilos...
-
-// Ahora tu componente Sidebar debería tener un margen alrededor y bordes redondeados más notorios
-
 
 const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 32px;
+  margin: 50px;
 `;
 
 const Logo = styled.img.attrs(() => ({ src: '/logo.png', alt: 'Logo' }))`
-  width: 80px; // O el tamaño de tu logo.
-  margin-bottom: 55px;
-  margin-top: 55px;
+  width: 80px;
 `;
 
 const MenuItemContainer = styled.div`
@@ -40,14 +39,15 @@ const MenuItem = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 16px;
+  font-weight: 600;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
-  background-color: ${(props) => (props.active ? '#4F46E5' : 'transparent')};
+  background-color: ${(props) => (props.active ? '#561EFA' : 'transparent')};
   color: ${(props) => (props.active ? '#ffffff' : '#1a202c')};
-  
+
   &:hover {
-    background-color: #4F46E5;
+    background-color: #561EFA;
     color: #ffffff;
   }
 
@@ -58,54 +58,61 @@ const MenuItem = styled.div`
 
 const PlanContainer = styled.div`
   margin-top: auto;
-  background-color: #f7fafc;
+  margin-bottom: 20%;
+  background-color: #EAEDED;
   border-radius: 12px;
   padding: 16px;
-  text-align: center;
+  text-align: left;
 `;
 
 const PlanTitle = styled.h3`
-  color: Black;
+  color: black;
   margin-bottom: 8px;
+`;
+
+const PlanTitle2 = styled.h6`
+  color: #515151;
+  margin-bottom: 8px;
+  font-size: 10px;
+  transform: skew(-10deg);
 `;
 
 const PlanDetail = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 24px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #515151;
+  padding-top: 16px;
 `;
-
 
 const PlanBar = styled.div`
   background-color: #e2e8f0;
-  height: 8px;
   border-radius: 4px;
-  overflow: hidden;
+  height: 8px;
   width: 100%;
+  margin-top: 5px;
 `;
 
 const ProgressBar = styled.div`
-  width: ${(props) => props.width || '50%'};
-  background-color: #4f46e5;
+  background-color: #561EFA;
   height: 100%;
+  width: ${(props) => props.width || '0%'};
+  border-radius: 4px;
 `;
 
 const Button = styled.button`
   width: 100%;
-  padding: 12px 16px;
-  text-align: left; /* Alineación del texto a la izquierda */
-  
+  padding: 8px 2px;
+  text-align: center;
   border: none;
-  border-radius: 8px;
-  background-color: #4f46e5;
-  color: #ffffff;
+  border-radius: 30px;
+  background-color: ${(props) => (props.active ? 'white' : '#561EFA')};
+  color: ${(props) => (props.active ? '#ffffff' : 'white')};
   font-weight: 600;
   cursor: pointer;
-  margin-top: 16px;
-  background-color: ${(props) => (props.active ? '#1a202c' : '#4f46e5')};
-  color: ${(props) => (props.active ? '#ffffff' : '#1a202c')};
-  
+  margin-top: 20px;
+
   &:hover {
     background-color: #4F46E5;
     color: #ffffff;
@@ -116,23 +123,29 @@ const Button = styled.button`
   }
 `;
 
-// Definición de un componente ficticio UsageDetail para evitar errores
-const UsageDetail = styled.div`
-  font-size: 9px; /* Tamaño de fuente más pequeño */
-  text-align: right; /* Alineación a la derecha */
-
-  /* Puedes ajustar el espaciado según tus preferencias */
-  padding: 4px;
-  margin: 0;
+const UsageDetail = styled.span`
+  font-size: 9px;
+  text-align: right;
 `;
 
+const iconMap = {
+  'Dashboard': MdOutlineDashboard,
+  'Videos': GoFileDirectory,
+  'Player': HiOutlinePlayCircle,
+  'Analytics': MdOutlineAnalytics,
+  'Configuraciones': IoSettingsOutline
+};
 
+const renderIcon = (name) => {
+  const Icon = iconMap[name];
+  return <Icon size={24} style={{ marginRight: '6px', fontWeight: 'bold'  }} />;
+};
 
 const Sidebar = () => {
-  const [active, setActive] = React.useState('Dashboard'); // El estado inicial es 'Dashboard'
+  const [active, setActive] = React.useState('Videos'); 
 
   const handleItemClick = (name) => {
-    setActive(name); // Actualiza el estado activo cuando un ítem es clickeado
+    setActive(name); 
   };
 
   return (
@@ -141,36 +154,31 @@ const Sidebar = () => {
         <Logo />
       </LogoContainer>
       <MenuItemContainer>
-        {['Dashboard', 'Videos', 'Player', 'Analytics', 'Configuraciones'].map((name) => (
+        {Object.keys(iconMap).map((name) => (
           <MenuItem
             key={name}
             active={active === name}
             onClick={() => handleItemClick(name)}
           >
+            {renderIcon(name)}
             <span>{name}</span>
           </MenuItem>
         ))}
       </MenuItemContainer>
       <PlanContainer>
         <PlanTitle>Mi Plan - Plus</PlanTitle>
+        <PlanTitle2>El uso se renueva el: 3-may-23</PlanTitle2>
         <PlanDetail>
-          Almacenamiento
-          <UsageDetail>
-            <span>23.5 GB / 1 TB</span>
-           
-          </UsageDetail>
-          <PlanBar><ProgressBar width="70%" /></PlanBar>
+          <div>Almacenamiento</div>
+          <UsageDetail>700 GB / 1 TB</UsageDetail>       
         </PlanDetail>
+        <PlanBar><ProgressBar width="70%" /></PlanBar>
         <PlanDetail>
-          Banda Mensual <span>3.4 TB</span>
-          <UsageDetail>
-          <span>3.4 TB</span>
-          <span>5 TB</span>
-          </UsageDetail>
-          <PlanBar><ProgressBar width="30%" /></PlanBar>
+          <div>Banda Mensual</div>
+          <UsageDetail>3.4 TB / 5 TB</UsageDetail>      
         </PlanDetail>
-        <Button>Administrar Plan</Button>
-        
+        <PlanBar><ProgressBar width="30%" /></PlanBar>
+        <Button>Administrar Plan</Button>  
       </PlanContainer>
     </SidebarContainer>
   );

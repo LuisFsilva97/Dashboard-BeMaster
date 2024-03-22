@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { GoFileDirectory, GoSearch  } from "react-icons/go";
-import { FaBook, FaTrashAlt } from 'react-icons/fa';
-import { PiPlayCircle } from "react-icons/pi";
-import DashboardContent from './DashboardContent';
+import { GoFileDirectory } from "react-icons/go";
+import { FaArrowLeft } from "react-icons/fa";
 
 const RightContainer = styled.div`
   flex-grow: 1;
@@ -13,6 +11,12 @@ const RightContainer = styled.div`
   padding: 55px;
 `;
 
+const NavigationContainer = styled.div`
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 18px; // Tamaño de fuente a ajustar según sea necesario
+`;
 const TopBar = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,126 +24,36 @@ const TopBar = styled.div`
 `;
 
 const NavigationButtons = styled.div`
-  display: flex;
-  justify-content: space-between; 
-  align-items: center; 
-  margin-bottom: 16px;
-`;
-
-const NavigationButton = styled.button`
-  background: none;
-  border: none;
-  padding: 4px 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  color: #333333;
-
-  &:hover, &.active {
-    color: #561EFA;
-  }
-
-  &.active {
-    border-bottom: 3px solid #561EFA;
-  }
-  
-  & + & {
-    margin-left: -75%;  
-  }
-  
-  @media (max-width: 1680px) {
-    & + & { 
-      margin-left: -48%; 
-    }
-  }
-
-  @media (max-width: 900px) {
-    & + & { 
-      margin-left: -10%; 
-    }
-  }
-`;
-
-const IconContainer = styled.span`
-  margin-right: 8px; 
-  display: flex;
-  align-items: center;
-`;
-
-const Text = styled.span`
-  display: inline-block;
-  vertical-align: middle;
-`;
-
-const BibliotecaIcon = styled(FaBook)`
-  margin-right: 0px;
-`;
-
-const PapeleraIcon = styled(FaTrashAlt)`
-  margin-right: 0px;
-`;
-
-const ActionButtons = styled.div`
-  display: flex;
-`;
-
-const ActionButton = styled.button`
-  background-color: ${(props) => props.primary ? '#561EFA' : '#E2E8F0'};
-  color: ${(props) => props.primary ? '#FFFFFF' : '#333333'};
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  margin-right: 8px;
-  cursor: pointer;
   display: flex; 
   align-items: center; 
-  &:hover {
-    background-color: ${(props) => props.primary ? '#3730A3' : '#CBD5E0'};
-  }
-
-  &:last-child {
-    margin-right: 5px;
-  }
+  margin-bottom: 61px;
+ 
 `;
 
-const SearchBarContainer = styled.div`
-  position: relative; 
+const BoldText = styled.span`
+    font-weight: bold;
+`;
+
+const Breadcrumbs = styled.span`
+  color: #333; // Cambiar a color adecuado del texto
+`;
+
+const NavigationButton = styled.a`
+  background-color: #561EFA;
+  border-radius: 5px;
+  padding: 8px 10px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 7px; 
-  padding: 6px 14px; 
-  width: auto; 
-  max-width: 40%;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: -30px;
+  margin-right: 16px;
+
 `;
 
-const SearchIcon = styled.span`
-  display: flex;
-  align-items: center;
-  color: #A0AEC0;
-  position: absolute; 
-  left: 16px; 
-`;
-
-const VerticalBar = styled.span`
-  padding-left: 8px; 
-  padding-right: 8px; 
-  display: flex;
-  align-items: center;
-`;
-
-const Input = styled.input.attrs({ type: 'search', placeholder: 'Buscar Video' })`
-  padding-left: 40px; 
-  border: none;
-  outline: none;
-  width: 100%;
-  background-color: transparent;
-
-  &::placeholder {
-    color: #A0AEC0;
-  }
-`;
 
 const TableContainer = styled.div`
   padding-top: 20px;
@@ -215,7 +129,13 @@ const Icon = styled(GoFileDirectory)`
 const Label = styled.label`
 `;
 
-const RightPanel = () => {
+const ArrowLeftIcon = styled(FaArrowLeft)`
+  font-size: 20px;
+  background-color: #561EFA;
+  
+`;
+
+const DashboardContent = () => {
   const [selectedFile, setSelectedFile] = useState(null); 
 
   const handleCheckboxChange = (event, id) => {
@@ -239,34 +159,15 @@ const RightPanel = () => {
     <RightContainer>
       <TopBar>
         <NavigationButtons>
-          <NavigationButton className="active">
-            <IconContainer>
-              <BibliotecaIcon />
-            </IconContainer>
-            <Text>Biblioteca</Text>
-          </NavigationButton>
-          <NavigationButton>
-            <IconContainer>
-              <PapeleraIcon />
-            </IconContainer>
-            <Text>Papelera</Text>
-          </NavigationButton>
-          <ActionButtons>
-            <ActionButton>
-              <GoFileDirectory size={20} />
-                Nueva carpeta
-            </ActionButton>
-            <ActionButton primary>
-              <PiPlayCircle size={20} />
-              Nuevo video
-            </ActionButton>
-          </ActionButtons>
+          <NavigationContainer>
+            <NavigationButton href="videotooldashboard\src\components\DashboardPage.js">
+              <ArrowLeftIcon />
+            </NavigationButton>
+            <Breadcrumbs>
+              Home / <BoldText>BeMaster</BoldText>
+            </Breadcrumbs>
+          </NavigationContainer>
         </NavigationButtons>
-        <SearchBarContainer>
-          <SearchIcon><GoSearch/><VerticalBar>|
-          </VerticalBar></SearchIcon>
-          <Input />
-        </SearchBarContainer>
         <TableContainer>
           <Table>
             <Thead>
@@ -305,4 +206,4 @@ const RightPanel = () => {
   );
 };
 
-export default RightPanel;
+export default DashboardContent;

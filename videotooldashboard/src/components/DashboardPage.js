@@ -1,11 +1,12 @@
-import React from 'react';
-import Sidebar from './Sidebar';
-import RightPanel from './RightPanel'; // Asegúrate de que esta ruta de importación sea correcta
+import React, { useState } from 'react';
+import Sidebar from './SideBar.js';
+import RightPanel from './RightPanel'; 
 import styled from 'styled-components';
+import DashboardContent from './DashboardContent';
 
 const DashboardContainer = styled.div`
   display: flex;
-  background-color: silver;
+  background-color: #F2F4F4;
   height: 100vh; // Ajusta la altura al 100% de la vista de la pantalla
 `;
 
@@ -18,11 +19,22 @@ const MainContent = styled.div`
 `;
 
 const DashboardPage = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileSelect = (file) => {
+    setSelectedFile(file);
+  };
+
+  const resetSelection = () => {
+    setSelectedFile(null);
+  };
+
   return (
     <DashboardContainer>
       <Sidebar />
       <MainContent>
-        <RightPanel />
+        {!selectedFile && <RightPanel onFileSelect={handleFileSelect} />}
+        {selectedFile && <DashboardContent file={selectedFile} onBack={resetSelection} />}
       </MainContent>
     </DashboardContainer>
   );
