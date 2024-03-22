@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { GoFileDirectory, GoSearch  } from "react-icons/go";
-import { FaBook, FaTrashAlt } from 'react-icons/fa';
+
 import { PiPlayCircle } from "react-icons/pi";
 import DashboardContent from './DashboardContent';
+import { VscLibrary } from "react-icons/vsc";
+import { IoTrashOutline } from "react-icons/io5";
+
 
 const RightContainer = styled.div`
   flex-grow: 1;
@@ -71,11 +74,11 @@ const Text = styled.span`
   vertical-align: middle;
 `;
 
-const BibliotecaIcon = styled(FaBook)`
+const BibliotecaIcon = styled(VscLibrary)`
   margin-right: 0px;
 `;
 
-const PapeleraIcon = styled(FaTrashAlt)`
+const PapeleraIcon = styled(IoTrashOutline)`
   margin-right: 0px;
 `;
 
@@ -180,7 +183,7 @@ const Tbody = styled.tbody`
 const CheckboxLabelContainer = styled.div`
   display: flex;
   align-items: center; 
-  gap: 8px; 
+  gap: 20px; 
 `;
 
 const Checkbox = styled.input.attrs({ type: 'checkbox' })`
@@ -273,7 +276,7 @@ const RightPanel = () => {
               <tr>
                 <th>
                   <CheckboxLabelContainer>
-                    <Checkbox id="video1" />
+                  <Checkbox onChange={(e) => handleCheckboxChange(e, 'video')} />
                     <Label htmlFor="video1">Nombre</Label>
                   </CheckboxLabelContainer>
                 </th>
@@ -288,12 +291,120 @@ const RightPanel = () => {
                 <CheckboxLabelContainer>
                   <Checkbox onChange={(e) => handleCheckboxChange(e, 'video1')} />
                   <Icon size={22} />
-                  <Label htmlFor="video1">Nombre del Video</Label>
+                  <Label htmlFor="video1">Afiliado Master</Label>
                 </CheckboxLabelContainer>
               </td>
               <td>8</td>
               <td>7.3 GB</td>
               <td>30/may/2023</td>
+            </tr>
+            <tr onClick={() => handleFileClick({ id: 'video1', name: 'Nombre del Video' })}>
+              <td>
+                <CheckboxLabelContainer>
+                  <Checkbox onChange={(e) => handleCheckboxChange(e, 'video2')} />
+                  <Icon size={22} />
+                  <Label htmlFor="video1">BeMaster</Label>
+                </CheckboxLabelContainer>
+              </td>
+              <td>21</td>
+              <td>1.4 GB</td>
+              <td>22/jun/2022</td>
+            </tr>
+            <tr onClick={() => handleFileClick({ id: 'video1', name: 'Nombre del Video' })}>
+              <td>
+                <CheckboxLabelContainer>
+                  <Checkbox onChange={(e) => handleCheckboxChange(e, 'video3')} />
+                  <Icon size={22} />
+                  <Label htmlFor="video1">Comizzión</Label>
+                </CheckboxLabelContainer>
+              </td>
+              <td>10</td>
+              <td>284 MB</td>
+              <td>11/sep/2021</td>
+            </tr>
+            <tr onClick={() => handleFileClick({ id: 'video1', name: 'Nombre del Video' })}>
+              <td>
+                <CheckboxLabelContainer>
+                  <Checkbox onChange={(e) => handleCheckboxChange(e, 'video4')} />
+                  <Icon size={22} />
+                  <Label htmlFor="video1">Creador de Contenido</Label>
+                </CheckboxLabelContainer>
+              </td>
+              <td>2</td>
+              <td>4.3 GB</td>
+              <td>21/jun/2023</td>
+            </tr>
+            <tr onClick={() => handleFileClick({ id: 'video1', name: 'Nombre del Video' })}>
+              <td>
+                <CheckboxLabelContainer>
+                  <Checkbox onChange={(e) => handleCheckboxChange(e, 'video5')} />
+                  <Icon size={22} />
+                  <Label htmlFor="video1">Exportados Wil</Label>
+                </CheckboxLabelContainer>
+              </td>
+              <td>14</td>
+              <td>500 MB</td>
+              <td>5/abr/2023</td>
+            </tr>
+            <tr onClick={() => handleFileClick({ id: 'video1', name: 'Nombre del Video' })}>
+              <td>
+                <CheckboxLabelContainer>
+                  <Checkbox onChange={(e) => handleCheckboxChange(e, 'video1')} />
+                  <Icon size={22} />
+                  <Label htmlFor="video1">Afiliado Master</Label>
+                </CheckboxLabelContainer>
+              </td>
+              <td>8</td>
+              <td>7.3 GB</td>
+              <td>30/may/2023</td>
+            </tr>
+            <tr onClick={() => handleFileClick({ id: 'video1', name: 'Nombre del Video' })}>
+              <td>
+                <CheckboxLabelContainer>
+                  <Checkbox onChange={(e) => handleCheckboxChange(e, 'video2')} />
+                  <Icon size={22} />
+                  <Label htmlFor="video1">BeMaster</Label>
+                </CheckboxLabelContainer>
+              </td>
+              <td>21</td>
+              <td>1.4 GB</td>
+              <td>22/jun/2022</td>
+            </tr>
+            <tr onClick={() => handleFileClick({ id: 'video1', name: 'Nombre del Video' })}>
+              <td>
+                <CheckboxLabelContainer>
+                  <Checkbox onChange={(e) => handleCheckboxChange(e, 'video3')} />
+                  <Icon size={22} />
+                  <Label htmlFor="video1">Comizzión</Label>
+                </CheckboxLabelContainer>
+              </td>
+              <td>10</td>
+              <td>284 MB</td>
+              <td>11/sep/2021</td>
+            </tr>
+            <tr onClick={() => handleFileClick({ id: 'video1', name: 'Nombre del Video' })}>
+              <td>
+                <CheckboxLabelContainer>
+                  <Checkbox onChange={(e) => handleCheckboxChange(e, 'video4')} />
+                  <Icon size={22} />
+                  <Label htmlFor="video1">Creador de Contenido</Label>
+                </CheckboxLabelContainer>
+              </td>
+              <td>2</td>
+              <td>4.3 GB</td>
+              <td>21/jun/2023</td>
+            </tr>
+            <tr onClick={() => handleFileClick({ id: 'video1', name: 'Nombre del Video' })}>
+              <td>
+                <CheckboxLabelContainer>
+                  <Checkbox onChange={(e) => handleCheckboxChange(e, 'video5')} />
+                  <Icon size={22} />
+                  <Label htmlFor="video1">Exportados Wil</Label>
+                </CheckboxLabelContainer>
+              </td>
+              <td>14</td>
+              <td>500 MB</td>
+              <td>5/abr/2023</td>
             </tr>
               {/* Otras filas de datos */}
             </Tbody>

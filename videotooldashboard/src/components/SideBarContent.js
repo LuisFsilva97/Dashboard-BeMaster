@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { MdOutlineDashboard, MdOutlineAnalytics  } from "react-icons/md";
+import { MdOutlineDashboard, MdOutlineAnalytics } from "react-icons/md";
 import { GoFileDirectory } from "react-icons/go";
-import { HiOutlinePlayCircle } from "react-icons/hi2";
+import { HiOutlinePlay } from "react-icons/hi"; 
 import { IoSettingsOutline } from "react-icons/io5";
+import { FiHelpCircle } from "react-icons/fi";
+
 
 
 const SidebarContainer = styled.div`
@@ -43,8 +45,8 @@ const MenuItem = styled.div`
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
-  background-color: ${(props) => (props.active ? '#561EFA' : 'transparent')};
-  color: ${(props) => (props.active ? '#ffffff' : '#1a202c')};
+  background-color: ${props => props.active ? '#561EFA' : 'transparent'};
+  color: ${props => props.active ? '#ffffff' : '#1a202c'};
 
   &:hover {
     background-color: #561EFA;
@@ -97,7 +99,7 @@ const PlanBar = styled.div`
 const ProgressBar = styled.div`
   background-color: #561EFA;
   height: 100%;
-  width: ${(props) => props.width || '0%'};
+  width: ${props => props.width || '0%'};
   border-radius: 4px;
 `;
 
@@ -107,8 +109,8 @@ const Button = styled.button`
   text-align: center;
   border: none;
   border-radius: 30px;
-  background-color: ${(props) => (props.active ? 'white' : '#561EFA')};
-  color: ${(props) => (props.active ? '#ffffff' : 'white')};
+  background-color: #561EFA;
+  color: white;
   font-weight: 600;
   cursor: pointer;
   margin-top: 20px;
@@ -116,10 +118,6 @@ const Button = styled.button`
   &:hover {
     background-color: #4F46E5;
     color: #ffffff;
-  }
-
-  span {
-    margin-left: 12px;
   }
 `;
 
@@ -131,21 +129,23 @@ const UsageDetail = styled.span`
 const iconMap = {
   'Dashboard': MdOutlineDashboard,
   'Videos': GoFileDirectory,
-  'Player': HiOutlinePlayCircle,
+  'Player': HiOutlinePlay,
   'Analytics': MdOutlineAnalytics,
-  'Configuraciones': IoSettingsOutline
+  'Configuraciones': IoSettingsOutline,
+  'Ayuda': FiHelpCircle,
+  
 };
 
-const renderIcon = (name) => {
-  const Icon = iconMap[name];
-  return <Icon size={24} style={{ marginRight: '6px', fontWeight: 'bold'  }} />;
+const renderIcon = (iconName) => {
+  const IconComponent = iconMap[iconName] || FiHelpCircle;
+  return <IconComponent size={24} style={{ marginRight: '12px' }} />;
 };
 
-const Sidebar = () => {
-  const [active, setActive] = React.useState('Videos'); 
+const SideBarContent = ({ showHelp }) => {
+  const [active, setActive] = useState('Videos'); 
 
   const handleItemClick = (name) => {
-    setActive(name); 
+    setActive(name);
   };
 
   return (
@@ -164,6 +164,15 @@ const Sidebar = () => {
             <span>{name}</span>
           </MenuItem>
         ))}
+        {showHelp && (
+          <MenuItem
+            active={active === 'Ayuda'}
+            onClick={() => handleItemClick('Ayuda')}
+          >
+            {renderIcon('Ayuda')}
+            <span>Ayuda</span>
+          </MenuItem>
+        )}
       </MenuItemContainer>
       <PlanContainer>
         <PlanTitle>Mi Plan - Plus</PlanTitle>
@@ -172,16 +181,20 @@ const Sidebar = () => {
           <div>Almacenamiento</div>
           <UsageDetail>700 GB / 1 TB</UsageDetail>       
         </PlanDetail>
-        <PlanBar><ProgressBar width="70%" /></PlanBar>
+        <PlanBar>
+            <ProgressBar width="70%" />
+        </PlanBar>
         <PlanDetail>
           <div>Banda Mensual</div>
-          <UsageDetail>3.4 TB / 5 TB</UsageDetail>      
+          <UsageDetail>3.4 TB / 5 TB</UsageDetail>
         </PlanDetail>
-        <PlanBar><ProgressBar width="30%" /></PlanBar>
-        <Button>Administrar Plan</Button>  
+        <PlanBar>
+            <ProgressBar width="68%" />
+        </PlanBar>
+        <Button>Administrar Plan</Button>
       </PlanContainer>
     </SidebarContainer>
   );
 };
 
-export default Sidebar;
+export default SideBarContent;
